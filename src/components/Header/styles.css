@@ -1,0 +1,92 @@
+.header {
+  background-color: #222;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.logo {
+  margin-right: 15px;
+}
+
+.link-logo {
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-right: 60px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  height: 36px;
+  border-radius: 8px;
+  width: 80%;
+}
+
+.header input {
+  border: none;
+  outline: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.btnSearch {
+  background-color: #ededed;
+  width: 36px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.theme button {
+  background-color: rgb(213, 211, 242);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+@media only screen and (max-width: 950px) {
+  .form {
+    width: 60%;
+  }
+  .center, .main, .container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .link-logo span {
+    display: none;
+  }
+  .link-logo {
+    margin-right: 20px;
+  }
+  .logo {
+    margin: 0;
+  }
+  .form {
+    width: 70%;
+  }
+}

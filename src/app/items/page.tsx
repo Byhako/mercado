@@ -1,8 +1,8 @@
 
-export default function Home() {
+export default function Items() {
   return (
     <section className="container">
-      HOLA
+      items
     </section>
   )
 }
