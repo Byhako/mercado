@@ -1,0 +1,59 @@
+h1.title {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: revert;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #222;
+  padding: 10px 10px 20px;
+}
+
+#dark .card {
+  border-color: #e0e0e0;
+}
+
+.info_product {
+  margin-left: 20px;
+}
+
+.name {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 24px;
+}
+
+.price span {
+  color: #4CAF50;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.original {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.installemnt {
+  font-size: 14px;
+}
+
+.installemnt span {
+  margin-right: 7px;
+}
+
+.send {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.city {
+  font-size: 14px;
+  margin-top: 15px;
+}
