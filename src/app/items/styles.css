@@ -1,3 +1,8 @@
+.list_products img {
+  height: 160px;
+  width: 160px;
+}
+
 h1.title {
   font-size: 24px;
   margin-bottom: 30px;
@@ -56,4 +61,108 @@ h1.title {
 .city {
   font-size: 14px;
   margin-top: 15px;
+}
+
+
+/* ITEM PAGE  */
+
+.warpper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  justify-content: space-between;
+}
+
+.warpper .name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.list_images {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+  overflow-y: scroll;
+  max-height: 450px;
+}
+
+.list_images img {
+  border-radius: 5px;
+}
+
+.list_images button {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 4px;
+}
+
+.img_primary {
+  width: 370px;
+  height: 450px;
+}
+
+.informacion {
+  padding-left: 10px;
+}
+
+.informacion .installemnt {
+  color: #4CAF50;
+}
+
+.informacion .installemnt span {
+  color: #000;
+  margin-right: 0;
+}
+
+#dark .informacion .installemnt span {
+  color: #fff;
+}
+
+p.seller {
+  font-size: 14px;
+  margin: 5px 0 10px;
+}
+
+.additional {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.additional button {
+  display: flex;
+  background: #E91E63;
+  color: #fff;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 30px;
+  outline: none;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  border-top: 1px solid #222;
+  padding-top: 40px;
+}
+
+#dark .description {
+  border-color: #ccc;
+}
+
+.description h2 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.description p {
+  color: #666;
+}
+
+#dark .description p {
+  color: #ccc;
 }

@@ -20,6 +20,7 @@ type Results = {
       state: { name: string }
     }
     installments : { quantity: number, amount: number }
+    seller: { nickname: string }
   }[]
 }
 
@@ -36,7 +37,11 @@ export default async function Items({ searchParams }: Props) {
 
       <article className='list_products'>
         {results.map(item => (
-          <Link href={`/items/${item.id}`} key={item.id} className='card'>
+          <Link
+            href={`/items/${item.id}?seller=${item.seller.nickname}&installments=${JSON.stringify(item.installments)}`}
+            key={item.id}
+            className='card'
+          >
             <Image
               src={item.thumbnail}
               alt={item.id}
