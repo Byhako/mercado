@@ -63,7 +63,7 @@ export default function ItemPage({params: {id}, searchParams}: Props) {
               <Image
                 src={item.url}
                 alt='image'
-                className="img_seccond"
+                className="img_second"
                 width={44}
                 height={44}
               />

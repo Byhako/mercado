@@ -13,6 +13,11 @@
   padding: 10px;
   min-height: 100vh;
 }
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 50px;
+}
 #dark {
   background: #2c2c2c;
   color: #e0e0e0;

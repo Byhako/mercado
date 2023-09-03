@@ -28,7 +28,7 @@ type Results = {
 // https://api.mercadolibre.com/sites/MCO/search?q=${product}&limit=4
 
 export default async function Items({ searchParams }: Props) {
-  const { results } = await fetch(`https://api.mercadolibre.com/sites/MCO/search?q=${searchParams.search}&limit=4`)
+  const { results } = await fetch(`https://api.mercadolibre.com/sites/MCO/search?q=${searchParams.search}&limit=9`)
     .then(res => res.json() as Promise<Results>)
 
   return (
