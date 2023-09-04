@@ -1,8 +1,17 @@
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import api from '@/api'
 import { Result, ResultsList } from '@/types'
 import './styles.css'
+
+export const metadata: Metadata = {
+  title: 'Productos',
+  description: 'Example page to market. Products',
+  icons: {
+    icon: '/logo.png'
+  }
+}
 
 type Props = {
   searchParams: { search: string }

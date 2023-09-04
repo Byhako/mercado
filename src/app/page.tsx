@@ -1,4 +1,13 @@
 import Image from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Mercado',
+  description: 'Example page to market',
+  icons: {
+    icon: '/logo.png'
+  }
+}
 
 export default function Home() {
   return (
