@@ -1,86 +1,74 @@
 "use client"
 import { useState, useEffect } from 'react'
+import api from '@/api'
 import Image from 'next/image'
 import '../styles.css'
+import BreadCrumb from '@/components/Breadcrumb'
+import { Path, Results, ResultsCategories } from '@/types'
 
 type Props = {
   params: { id: string }
   searchParams: {
     seller: string
     installments: string
+    category: string
   }
 }
 
-type Results = {
-  title: string
-  price: number
-  original_price: number
-  available_quantity: number
-  currency_id: string
-  pictures: [ { url: string, id: string } ]
-  shipping: { free_shipping: boolean }
-}
-
-type Description = {
-  plain_text: string
-}
-
 export default function ItemPage({params: {id}, searchParams}: Props) {
+  const { seller, installments, category } = searchParams
   const [image, setImage] = useState<string>('')
-  const [description, setDescription] = useState<string>('')
+  const [path, setPath] = useState<Path[]>()
   const [results, setResults] = useState<Results>()
 
   useEffect(() => {
     const getData = async () => {
-      const results = await fetch(`https://api.mercadolibre.com/items/${id}`)
-      .then(res => res.json() as Promise<Results>)
+      const data = await api.item.fetch(id)
+      const categories: ResultsCategories = await api.item.categories(category)
 
-      const description = await fetch(`https://api.mercadolibre.com/items/${id}/description`)
-        .then(res => res.json() as Promise<Description>)
-
-      setImage(results.pictures[0].url)
-      setResults(results)
-      setDescription(description.plain_text)
+      setPath(categories.path_from_root)
+      setImage(data.pictures[0].url)
+      setResults(data)
 
       return
     }
-
     getData()
+  }, [id, category])
 
-  }, [id])
-
-  const { seller, installments } = searchParams
   const installment = JSON.parse(installments)
 
   if (!results) return <p>Cargango ...</p>
 
   return (
     <section className="container">
+      <BreadCrumb path={path} />
       <div className="warpper">
-        <div className="list_images">
-          {results.pictures.map(item => (
-            <button key={item.id} onClick={() => setImage(item.url)}>
-              <Image
-                src={item.url}
-                alt='image'
-                className="img_second"
-                width={44}
-                height={44}
-              />
-            </button>
-          ))}
+        <p className='name mobileName'>{results.title}</p>
+
+        <div className='content_images'>
+          <div className="list_images">
+            {results.pictures.map(item => (
+              <button key={item.id} onClick={() => setImage(item.url)}>
+                <Image
+                  src={item.url}
+                  alt='image'
+                  className="img_second"
+                  width={44}
+                  height={44}
+                />
+              </button>
+            ))}
+          </div>
+
+          <img
+            src={image}
+            alt='image'
+            className="img_primary"
+          />
         </div>
 
-        <Image
-          src={image}
-          alt='image'
-          className="img_primary"
-          width={370}
-          height={450}
-        />
-
         <div className="informacion">
-          <p className='name'>{results.title}</p>
+          <p className='name desktopName'>{results.title}</p>
 
           <p className='original'>
             {results.original_price &&
@@ -139,10 +127,12 @@ export default function ItemPage({params: {id}, searchParams}: Props) {
         </div>
       </div>
 
-      <div className="description">
-        <h2>Description</h2>
-        <p>{description}</p>
-      </div>
+      {results.description && (
+        <div className="description">
+          <h2>Descripción</h2>
+          <p>{results.description}</p>
+        </div>
+      )}
     </section>
   )
 }

@@ -1,0 +1,22 @@
+.breadcrumb {
+  padding: 10px 0 10px 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+#light .breadcrumb {
+  background-color: #e4e3e3;
+}
+#dark .breadcrumb {
+  background-color: #262626;
+}
+
+@media only screen and (max-width: 610px) {
+  .breadcrumb {
+    font-size: 12px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+  }
+}

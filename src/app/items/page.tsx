@@ -1,44 +1,24 @@
 import Image from 'next/image'
-import './styles.css'
 import Link from 'next/link'
+import api from '@/api'
+import { Result, ResultsList } from '@/types'
+import './styles.css'
 
 type Props = {
   searchParams: { search: string }
 }
 
-type Results = {
-  results: {
-    id: string
-    title: string
-    thumbnail: string
-    price: number
-    original_price: number
-    currency_id: string
-    shipping: { free_shipping: boolean }
-    seller_address: {
-      city: { name: string }
-      state: { name: string }
-    }
-    installments : { quantity: number, amount: number }
-    seller: { nickname: string }
-  }[]
-}
-
-// https://api.mercadolibre.com/items/id
-// https://api.mercadolibre.com/sites/MCO/search?q=${product}&limit=4
-
 export default async function Items({ searchParams }: Props) {
-  const { results } = await fetch(`https://api.mercadolibre.com/sites/MCO/search?q=${searchParams.search}&limit=9`)
-    .then(res => res.json() as Promise<Results>)
+  const { results }: ResultsList = await api.item.search(searchParams.search)
 
   return (
     <section className="container">
-      <h1 className='title'>Resultados para: {searchParams.search}</h1>
+      <h1 className='title_list'>Resultados para: {searchParams.search}</h1>
 
       <article className='list_products'>
-        {results.map(item => (
+        {results.map((item: Result) => (
           <Link
-            href={`/items/${item.id}?seller=${item.seller.nickname}&installments=${JSON.stringify(item.installments)}`}
+            href={`/items/${item.id}?seller=${item.seller.nickname}&installments=${JSON.stringify(item.installments)}&category=${item.category_id}`}
             key={item.id}
             className='card'
           >
