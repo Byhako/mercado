@@ -6,11 +6,18 @@
   min-height: calc(100vh - 40px);
   width: 100%;
   padding: 20px 0;
+  position: relative;
 }
 .container {
   max-width: 1200px;
   margin: 0 auto;
   min-height: calc(100vh - 100px);
+}
+.chat {
+  width: min-content;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
 }
 .first_title {
   font-size: 40px;
