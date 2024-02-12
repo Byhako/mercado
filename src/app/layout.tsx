@@ -18,10 +18,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className='main' id={state}>
           {children}
         </main>
-        
-        <div className='chat'>
-          <iframe width="350" height="430" allow="microphone;" title='bot' src="https://console.dialogflow.com/api-client/demo/embedded/627682b9-43b5-4bc2-8058-358a08a1f887"></iframe>
-        </div>
       </body>
     </html>
   )
